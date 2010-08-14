@@ -83,6 +83,17 @@ var graph = Class.create({
 			}
 			this.canvas.stroke();
 			this.canvas.fill();
+			if (opt.legend !== undefined && opt.legend === true) {
+				hOff = 5;
+				for (i = 0; i < opt.numData; i++) {
+					this.canvas.fillStyle = opt.fillStyle[i];
+					this.canvas.fillRect(this.width + this.lOffset - 20, hOff, 20, 20);
+					this.canvas.fillStyle = "#000";
+					text = opt.legendLabel[i];
+					this.canvas.fillText(text, (this.width + this.lOffset - 20) - this.canvas.measureText(text).width - 5, hOff + 12);
+					hOff += 22;
+				}
+			}
 		} catch(e) {
 			if (Mojo !== undefined) { // on webOS
 				Mojo.Log.error("-------ERROR IN graph.js drawArea()--------");
