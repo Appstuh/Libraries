@@ -35,10 +35,7 @@ var graph = Class.create({
 				//TODO: use the shortestData variable to shorten the data arrays to the shortest length
 			}
 			
-			if (this.scale !== (10 * Math.ceil(this.scale / 10))) { // if the number is not divisible by 10
-				//this.scale = 10 * Math.ceil(this.scale / 10);
-				this.scale = this.scale + 2;
-			}
+			this.scale = this.scale + 2; // automatically prevent it from EVER hitting the top of the canvas element
 			
 			if (opt.numData === undefined || opt.numData === null || opt.numData < 1) {
 				opt.numData = opt.data.length;
